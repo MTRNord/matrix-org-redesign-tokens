@@ -1,0 +1,45 @@
+{
+  "asset": {
+    "font": {
+      "Hanken Grotesk": {
+        "300": {
+          "normal": {
+            "$value": "fonts/HankenGrotesk-Light",
+            "$type": "asset",
+            "formats": ["woff2", "woff"]
+          }
+        },
+        "400": {
+          "normal": {
+            "$value": "fonts/HankenGrotesk-Regular",
+            "$type": "asset",
+            "formats": ["woff2", "woff"]
+          }
+        },
+        "700": {
+          "normal": {
+            "$value": "fonts/HankenGrotesk-Bold",
+            "$type": "asset",
+            "formats": ["woff2", "woff"]
+          }
+        }
+      },
+      "Lora": {
+        "300": {
+          "normal": {
+            "$value": "fonts/Lora-Light",
+            "$type": "asset",
+            "formats": ["woff2", "woff"]
+          }
+        },
+        "700": {
+          "normal": {
+            "$value": "fonts/Lora-Bold",
+            "$type": "asset",
+            "formats": ["woff2", "woff"]
+          }
+        }
+      }
+    }
+  }
+}

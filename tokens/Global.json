@@ -1,0 +1,272 @@
+{
+  "SpicyPaprika": {
+    "$value": "#EC4E20",
+    "$type": "color",
+    "$description": ""
+  },
+  "Black": {
+    "$value": "rgb(0, 0, 0)",
+    "$type": "color",
+    "$description": ""
+  },
+  "H3": {
+    "$value": {
+      "fontFamilies": [
+        "{serif}"
+      ],
+      "fontSizes": "19",
+      "fontWeights": "700",
+      "lineHeights": "1.2",
+      "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "ImageCaption": {
+    "$value": {
+      "fontFamilies": [
+        "{sans}"
+      ],
+      "fontSizes": "13",
+      "fontWeights": "400",
+      "lineHeights": "1.2",
+      "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "Byline": {
+    "$value": {
+      "fontFamilies": [
+        "{sans}"
+      ],
+      "fontSizes": "13",
+      "fontWeights": "700",
+      "lineHeights": "1.2",
+      "letterSpacing": "0",
+      "textCase": "uppercase",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "sans": {
+    "$value": [
+      "Hanken Grotesk"
+    ],
+    "$type": "fontFamilies",
+    "$description": ""
+  },
+  "serif": {
+    "$value": [
+      "Lora"
+    ],
+    "$type": "fontFamilies",
+    "$description": ""
+  },
+  "H6": {
+    "$value": {
+      "fontFamilies": [
+        "{serif}"
+      ],
+      "fontSizes": "12.8",
+      "fontWeights": "700",
+      "lineHeights": "1.2",
+      "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "twim-quote-attribution": {
+    "$value": {
+      "fontFamilies": [
+        "{sans}"
+      ],
+      "fontSizes": "13",
+      "fontWeights": "700",
+      "letterSpacing": "1.4",
+      "textCase": "uppercase",
+      "lineHeights": "1.2"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "White": {
+    "$value": "rgb(255, 255, 255)",
+    "$type": "color",
+    "$description": ""
+  },
+  "twim-quote": {
+    "$value": {
+      "fontFamilies": [
+        "{serif}"
+      ],
+      "fontSizes": "16.8",
+      "fontWeights": "300",
+      "lineHeights": "1.31"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "BrightMarine": {
+    "$value": "#016FB9",
+    "$type": "color",
+    "$description": ""
+  },
+  "SidebarItem": {
+    "$value": {
+      "fontFamilies": [
+        "{sans}"
+      ],
+      "fontSizes": "13",
+      "fontWeights": "400",
+      "lineHeights": "1.2",
+      "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "LightGrey": {
+    "$value": "rgb(112,112,112)",
+    "$type": "color",
+    "$description": ""
+  },
+  "H1": {
+    "$value": {
+      "fontFamilies": [
+        "{sans}"
+      ],
+      "fontSizes": "36",
+      "fontWeights": "700",
+      "lineHeights": "1.2",
+      "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "H4": {
+    "$value": {
+      "fontFamilies": [
+        "{serif}"
+      ],
+      "fontSizes": "18",
+      "fontWeights": "700",
+      "lineHeights": "1.2",
+      "letterSpacing": "0.5",
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "ReducedText": {
+    "$value": "rgb(95, 95, 95)",
+    "$type": "color",
+    "$description": "Used for things like the Metadata of a Post."
+  },
+  "Eyebrow": {
+    "$value": {
+      "fontFamilies": [
+        "{sans}"
+      ],
+      "fontSizes": "13",
+      "fontWeights": "700",
+      "lineHeights": "1.2",
+      "letterSpacing": "1.4",
+      "textCase": "uppercase",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "H5": {
+    "$value": {
+      "fontFamilies": [
+        "{serif}"
+      ],
+      "fontSizes": "16",
+      "fontWeights": "700",
+      "lineHeights": "1.2",
+      "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "H2": {
+    "$value": {
+      "fontFamilies": [
+        "{sans}"
+      ],
+      "fontSizes": "19",
+      "fontWeights": "700",
+      "lineHeights": "1.25",
+      "letterSpacing": "0",
+      "textCase": "uppercase",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "SidebarTitle": {
+    "$value": {
+      "fontFamilies": [
+        "{sans}"
+      ],
+      "fontSizes": "13",
+      "fontWeights": "700",
+      "lineHeights": "1.2",
+      "letterSpacing": "0",
+      "textCase": "uppercase",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "BlogText": {
+    "$value": {
+      "fontSizes": "19",
+      "fontWeights": "300",
+      "lineHeights": "1.68",
+      "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none",
+      "fontFamilies": [
+        "{serif}"
+      ]
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "Dek": {
+    "$value": {
+      "fontFamilies": [
+        "{serif}"
+      ],
+      "fontSizes": "18",
+      "fontWeights": "300",
+      "lineHeights": "1.33",
+      "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "Links": {
+    "$value": "#FF9505",
+    "$type": "color",
+    "$description": ""
+  }
+}

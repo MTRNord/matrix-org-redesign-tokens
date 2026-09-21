@@ -1,0 +1,14 @@
+{
+  "tokenSetOrder": [
+    "Global",
+    "mode/light",
+    "mode/dark"
+  ],
+  "activeThemes": [
+    "Mode/Light"
+  ],
+  "activeSets": [
+    "Global",
+    "mode/light"
+  ]
+}

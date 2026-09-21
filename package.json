@@ -1,0 +1,11 @@
+{
+  "name": "matrix-org-design-token-tests",
+  "scripts": {
+    "build": "node build.mjs",
+    "clean": "style-dictionary clean"
+  },
+  "dependencies": {
+    "@tokens-studio/sd-transforms": "^2.0.3",
+    "style-dictionary": "^5.5.5"
+  }
+}

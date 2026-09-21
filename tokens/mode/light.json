@@ -1,0 +1,7 @@
+{
+  "background-color": {
+    "$value": "#ffffff",
+    "$type": "color",
+    "$description": ""
+  }
+}

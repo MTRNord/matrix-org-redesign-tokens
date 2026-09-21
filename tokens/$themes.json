@@ -1,0 +1,24 @@
+[
+  {
+    "id": "ccc0e03f-6023-80d8-8008-ac80d3f86384",
+    "name": "Light",
+    "group": "Mode",
+    "description": "",
+    "isSource": false,
+    "selectedTokenSets": {
+      "Global": "enabled",
+      "mode/light": "enabled"
+    }
+  },
+  {
+    "id": "ccc0e03f-6023-80d8-8008-ac80e0451dc0",
+    "name": "Dark",
+    "group": "Mode",
+    "description": "",
+    "isSource": false,
+    "selectedTokenSets": {
+      "Global": "enabled",
+      "mode/dark": "enabled"
+    }
+  }
+]

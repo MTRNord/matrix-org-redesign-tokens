@@ -1,11 +1,21 @@
 {
-  "SpicyPaprika": {
-    "$value": "#EC4E20",
+  "reduced-text": {
+    "$value": "rgb(95, 95, 95)",
+    "$type": "color",
+    "$description": "Used for things like the Metadata of a Post."
+  },
+  "light-grey": {
+    "$value": "rgb(112,112,112)",
     "$type": "color",
     "$description": ""
   },
   "Black": {
     "$value": "rgb(0, 0, 0)",
+    "$type": "color",
+    "$description": ""
+  },
+  "spicy-paprika": {
+    "$value": "#EC4E20",
     "$type": "color",
     "$description": ""
   },
@@ -22,6 +32,11 @@
       "textDecoration": "none"
     },
     "$type": "typography",
+    "$description": ""
+  },
+  "bright-marine": {
+    "$value": "#016FB9",
+    "$type": "color",
     "$description": ""
   },
   "ImageCaption": {
@@ -68,6 +83,11 @@
     "$type": "fontFamilies",
     "$description": ""
   },
+  "button-radius": {
+    "$value": "50",
+    "$type": "borderRadius",
+    "$description": ""
+  },
   "H6": {
     "$value": {
       "fontFamilies": [
@@ -102,6 +122,11 @@
     "$type": "color",
     "$description": ""
   },
+  "big-radius": {
+    "$value": "25",
+    "$type": "borderRadius",
+    "$description": ""
+  },
   "twim-quote": {
     "$value": {
       "fontFamilies": [
@@ -112,11 +137,6 @@
       "lineHeights": "1.31"
     },
     "$type": "typography",
-    "$description": ""
-  },
-  "BrightMarine": {
-    "$value": "#016FB9",
-    "$type": "color",
     "$description": ""
   },
   "SidebarItem": {
@@ -132,11 +152,6 @@
       "textDecoration": "none"
     },
     "$type": "typography",
-    "$description": ""
-  },
-  "LightGrey": {
-    "$value": "rgb(112,112,112)",
-    "$type": "color",
     "$description": ""
   },
   "H1": {
@@ -169,11 +184,6 @@
     "$type": "typography",
     "$description": ""
   },
-  "ReducedText": {
-    "$value": "rgb(95, 95, 95)",
-    "$type": "color",
-    "$description": "Used for things like the Metadata of a Post."
-  },
   "Eyebrow": {
     "$value": {
       "fontFamilies": [
@@ -187,6 +197,11 @@
       "textDecoration": "none"
     },
     "$type": "typography",
+    "$description": ""
+  },
+  "small-radius": {
+    "$value": "5",
+    "$type": "borderRadius",
     "$description": ""
   },
   "H5": {

@@ -54,13 +54,6 @@ const metadata = JSON.parse(readFileSync(resolve("$metadata"), "utf8"));
 const sourcesFor = (setNames) =>
   metadata.tokenSetOrder.filter((s) => setNames.includes(s)).map(setFile);
 
-// --- theme strategy -----------------------------------------------------------
-
-/** Groups whose themes follow the system color scheme. Extend as needed. */
-const SYSTEM_COLOR_SCHEME_THEMES = {
-  Mode: { Dark: "(prefers-color-scheme: dark)" },
-};
-
 // --- derive passes from the theme definitions --------------------------------
 
 if (themes.length === 0) {
@@ -111,8 +104,6 @@ const passes = [
 ];
 
 // --- build ---------------------------------------------------------------------
-
-rmSync("build", { recursive: true, force: true });
 
 // 1. fonts pass — mode-independent, built once
 const fontsSd = new StyleDictionary(fontsConfig([resolve("font")]));

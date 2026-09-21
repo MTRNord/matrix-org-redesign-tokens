@@ -6,8 +6,8 @@
     "description": "",
     "isSource": false,
     "selectedTokenSets": {
-      "Global": "enabled",
-      "mode/light": "enabled"
+      "mode/light": "enabled",
+      "Global": "enabled"
     }
   },
   {
@@ -17,8 +17,8 @@
     "description": "",
     "isSource": false,
     "selectedTokenSets": {
-      "Global": "enabled",
-      "mode/dark": "enabled"
+      "mode/dark": "enabled",
+      "Global": "enabled"
     }
   }
 ]

@@ -1,6 +1,7 @@
 import { expandTypesMap } from "@tokens-studio/sd-transforms";
 import StyleDictionary from "style-dictionary";
 import { transformTypes } from "style-dictionary/enums";
+import { usesReferences, getReferences } from "style-dictionary/utils";
 
 // Register an "attribute" transform to codify the font's details
 // as named attributes.
@@ -63,7 +64,15 @@ StyleDictionary.registerFormat({
   format: ({ dictionary: { allTokens }, options, file }) => {
     const { media = "", selector = ":root" } = options;
     const declarations = allTokens
-      .map((t) => "  --" + t.name + ": " + (t.$value ?? t.value) + ";")
+      .map((t) => {
+        let value = t.$value ?? t.value;
+        if (options.outputReferences && usesReferences(value, t)) {
+          getReferences(value, t).forEach((ref) => {
+            value = value.replace(ref.value, `var(--${ref.name})`);
+          });
+        }
+        return "  --" + t.name + ": " + value + ";";
+      })
       .join("\n");
     const body = selector + " {\n" + declarations + "\n}";
     const output = media
@@ -94,7 +103,11 @@ export default function getConfig(pass) {
     {
       destination: `_${dest}.css`,
       format: media ? "css/variables-media" : "css/variables",
-      ...(media && { options: { media } }),
+      options: {
+        media,
+        // FIXME: Technically broken due to the required "expand: { typesMap: expandTypesMap }," below :/
+        outputReferences: true,
+      },
       ...(diffFilter && { filter: diffFilter }),
     },
   ];
@@ -103,10 +116,29 @@ export default function getConfig(pass) {
     source,
     usesDtcg: true,
     preprocessors: ["tokens-studio"],
+    log: {
+      verbosity: "verbose",
+    },
     expand: { typesMap: expandTypesMap },
     platforms: {
       css: {
         transformGroup: "tokens-studio",
+        transforms: [
+          "attribute/cti",
+          "name/kebab",
+          "time/seconds",
+          "html/icon",
+          "size/pxToRem",
+          "color/css",
+          "asset/url",
+          "fontFamily/css",
+          "cubicBezier/css",
+          "strokeStyle/css/shorthand",
+          "border/css/shorthand",
+          "typography/css/shorthand",
+          "transition/css/shorthand",
+          "shadow/css/shorthand",
+        ],
         buildPath: "build/css/",
         files,
       },
@@ -119,6 +151,9 @@ export const fontsConfig = (source) => ({
   source,
   usesDtcg: true,
   preprocessors: ["tokens-studio"],
+  log: {
+    verbosity: "verbose",
+  },
   platforms: {
     "css-font-face": {
       transforms: ["name/kebab", "attribute/font"],

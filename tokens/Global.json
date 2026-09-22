@@ -5,7 +5,7 @@
     "$description": "Used for things like the Metadata of a Post."
   },
   "light-grey": {
-    "$value": "rgb(112,112,112)",
+    "$value": "rgb(182, 182, 182)",
     "$type": "color",
     "$description": ""
   },

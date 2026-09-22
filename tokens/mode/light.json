@@ -3,5 +3,15 @@
     "$value": "#ffffff",
     "$type": "color",
     "$description": ""
+  },
+  "primary-text-color": {
+    "$value": "{Black}",
+    "$type": "color",
+    "$description": ""
+  },
+  "primary-text-color-inverted": {
+    "$value": "{White}",
+    "$type": "color",
+    "$description": ""
   }
 }

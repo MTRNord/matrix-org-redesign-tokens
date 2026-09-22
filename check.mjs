@@ -1,3 +1,9 @@
+/*
+ * SPDX-FileCopyrightText: 2026 The Matrix.org Foundation C.I.C.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 /**
  * Checks the build output for invalid or missing CSS, e.g. after a change in
  * the Penpot export format. Expects `build/` to exist.

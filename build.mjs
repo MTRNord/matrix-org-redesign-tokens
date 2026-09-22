@@ -1,8 +1,15 @@
+/*
+ * SPDX-FileCopyrightText: 2026 The Matrix.org Foundation C.I.C.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
 import { writeFileSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
-import getConfig, { fontsConfig } from "./sd.config.mjs";
+import { fileHeader } from "style-dictionary/utils";
+import getConfig, { fontsConfig, licenseHeader } from "./sd.config.mjs";
 
 register(StyleDictionary);
 
@@ -99,15 +106,14 @@ for (const pass of passes) {
 }
 
 // Import order matters: theme overrides follow the base variables.
-writeFileSync(
-  "build/css/index.css",
-  [
-    "fonts.css",
-    ...passes.map((p) => `_${p.dest}.css`),
-    "typography.css",
-  ]
-    .map((f) => `@import url("${f}");`)
-    .join("\n") + "\n",
-);
+const imports = [
+  "fonts.css",
+  ...passes.map((p) => `_${p.dest}.css`),
+  "typography.css",
+].map((f) => `@import url("${f}");`);
+const indexHeader = await fileHeader({
+  file: { options: { fileHeader: licenseHeader } },
+});
+writeFileSync("build/css/index.css", indexHeader + imports.join("\n") + "\n");
 
 console.log(`Built ${passes.length} theme pass(es)`);

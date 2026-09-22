@@ -1,3 +1,9 @@
+<!--
+SPDX-FileCopyrightText: 2026 The Matrix.org Foundation C.I.C.
+
+SPDX-License-Identifier: Apache-2.0
+-->
+
 # Matrix.org design tokens
 
 Design tokens for the matrix.org redesign, exported from our Penpot instance and converted to CSS with [Style Dictionary](https://styledictionary.com/).
@@ -50,3 +56,7 @@ The `crossorigin` attribute is needed even for fonts on the same domain. Without
 ## Notes
 
 Penpot exports typography tokens with plural keys such as `fontSizes`. The `penpot/typography` preprocessor in `sd.config.mjs` renames them to the names Style Dictionary expects. It can be removed once [penpot#8140](https://github.com/penpot/penpot/issues/8140) is fixed.
+
+## License
+
+Apache-2.0. The project follows the [REUSE](https://reuse.software/) specification. Files that cannot contain a license header, such as the Penpot export and `package.json`, are listed in `REUSE.toml`. Run `reuse lint` to check.

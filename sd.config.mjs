@@ -1,7 +1,35 @@
+/*
+ * SPDX-FileCopyrightText: 2026 The Matrix.org Foundation C.I.C.
+ *
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
 import { expandTypesMap } from "@tokens-studio/sd-transforms";
 import StyleDictionary from "style-dictionary";
 import { transformTypes } from "style-dictionary/enums";
 import { fileHeader } from "style-dictionary/utils";
+
+/**
+ * License header for all generated files, below the default
+ * "Do not edit directly" line.
+ *
+ * @param {string[]} defaultMessages
+ * @returns {string[]}
+ */
+// REUSE-IgnoreStart
+export const licenseHeader = (defaultMessages) => [
+  ...defaultMessages,
+  "",
+  "SPDX-FileCopyrightText: 2026 The Matrix.org Foundation C.I.C.",
+  "",
+  "SPDX-License-Identifier: Apache-2.0",
+];
+// REUSE-IgnoreEnd
+
+StyleDictionary.registerFileHeader({
+  name: "matrix-org/license",
+  fileHeader: licenseHeader,
+});
 
 /**
  * Penpot typography keys mapped to their DTCG names.
@@ -207,6 +235,7 @@ export default function getConfig(pass) {
         // Runs after the group, so name/kebab overrides its name/camel.
         transforms: ["name/kebab", "size/pxToRem"],
         buildPath: "build/css/",
+        options: { fileHeader: "matrix-org/license" },
         files,
         // Theme overrides reference tokens defined only in the base file,
         // which Style Dictionary reports as filtered out references.
@@ -233,6 +262,7 @@ export const fontsConfig = (source) => ({
     "css-font-face": {
       transforms: ["name/kebab", "attribute/font"],
       buildPath: "build/css/",
+      options: { fileHeader: "matrix-org/license" },
       files: [
         {
           destination: "fonts.css",

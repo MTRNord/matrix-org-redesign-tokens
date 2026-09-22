@@ -1,0 +1,12 @@
+# SPDX-FileCopyrightText: 2026 The Matrix.org Foundation C.I.C.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+version = 1
+
+# Penpot token export and npm metadata. JSON cannot hold comments.
+[[annotations]]
+path = ["tokens/**", "package.json", "package-lock.json"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2026 The Matrix.org Foundation C.I.C."
+SPDX-License-Identifier = "Apache-2.0"

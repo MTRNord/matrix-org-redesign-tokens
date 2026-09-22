@@ -59,6 +59,16 @@ Colors are written as `hsl()` with two decimals by the `color/hsl-precise` trans
 
 Penpot exports typography tokens with plural keys such as `fontSizes`. The `penpot/typography` preprocessor in `sd.config.mjs` renames them to the names Style Dictionary expects. It can be removed once [penpot#8140](https://github.com/penpot/penpot/issues/8140) is fixed.
 
+## CI
+
+The `Build` workflow runs `reuse lint` and `npm test` for every pull request and push to `main`, and uploads the CSS as a workflow artifact. Published releases get the CSS attached as `.zip` and `.tar.gz`.
+
+The workflows are checked with [zizmor](https://docs.zizmor.sh/). To run it locally:
+
+```sh
+uvx zizmor --pedantic .github/
+```
+
 ## License
 
 Apache-2.0. The project follows the [REUSE](https://reuse.software/) specification. Files that cannot contain a license header, such as the Penpot export and `package.json`, are listed in `REUSE.toml`. Run `reuse lint` to check.

@@ -1,0 +1,73 @@
+# SPDX-FileCopyrightText: 2026 The Matrix.org Foundation C.I.C.
+#
+# SPDX-License-Identifier: Apache-2.0
+
+name: Build
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  release:
+    types: [published]
+  workflow_dispatch:
+
+permissions:
+  contents: read # checkout only
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'release' }}
+
+jobs:
+  build:
+    name: Build CSS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - uses: fsfe/reuse-action@676e2d560c9a403aa252096d99fcab3e1132b0f5 # v6.0.0
+
+      - uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: 22
+          # No dependency cache: the output is published on releases, and a
+          # cache written by another run could change it.
+          package-manager-cache: false
+
+      - run: npm ci
+
+      # Builds the CSS and runs Stylelint on it.
+      - run: npm test
+
+      - uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: design-tokens-css
+          path: build/css/
+          if-no-files-found: error
+
+  release:
+    name: Attach CSS to release
+    if: github.event_name == 'release'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # upload release assets
+    steps:
+      - uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: design-tokens-css
+          path: css
+
+      - name: Attach CSS to the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          TAG: ${{ github.event.release.tag_name }}
+        run: |
+          archive="matrix-org-design-tokens-${TAG}"
+          zip -r "${archive}.zip" css
+          tar -czf "${archive}.tar.gz" css
+          gh release upload "$TAG" "${archive}.zip" "${archive}.tar.gz" --clobber

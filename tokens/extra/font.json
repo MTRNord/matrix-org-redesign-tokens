@@ -39,6 +39,22 @@
             "formats": ["woff2"]
           }
         }
+      },
+      "Inter": {
+        "400": {
+          "normal": {
+            "$value": "fonts/Inter-Regular",
+            "$type": "asset",
+            "formats": ["woff2"]
+          }
+        },
+        "700": {
+          "normal": {
+            "$value": "fonts/Inter-Bold",
+            "$type": "asset",
+            "formats": ["woff2"]
+          }
+        }
       }
     }
   }

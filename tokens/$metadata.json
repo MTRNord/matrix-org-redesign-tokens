@@ -1,6 +1,7 @@
 {
   "tokenSetOrder": [
     "Global",
+    "Color Palettes",
     "mode/light",
     "mode/dark"
   ],
@@ -9,6 +10,7 @@
   ],
   "activeSets": [
     "mode/light",
+    "Color Palettes",
     "Global"
   ]
 }

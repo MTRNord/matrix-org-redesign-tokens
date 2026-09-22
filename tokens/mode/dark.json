@@ -1,6 +1,6 @@
 {
-  "background-color": {
-    "$value": "#181818",
+  "reduced-text": {
+    "$value": "{palette.grey.400}",
     "$type": "color",
     "$description": ""
   },
@@ -9,8 +9,50 @@
     "$type": "color",
     "$description": ""
   },
+  "link-hover": {
+    "$value": "{palette.tangerine.300}",
+    "$type": "color",
+    "$description": ""
+  },
+  "divider": {
+    "$value": "{palette.paprika.500}",
+    "$type": "color",
+    "$description": ""
+  },
+  "accent-border": {
+    "$value": "{palette.marine.500}",
+    "$type": "color",
+    "$description": ""
+  },
+  "heading-anchor": {
+    "$value": "{palette.grey.500}",
+    "$type": "color",
+    "$description": ""
+  },
+  "link": {
+    "$value": "{palette.tangerine.400}",
+    "$type": "color",
+    "$description": ""
+  },
   "primary-text-color-inverted": {
     "$value": "{Black}",
+    "$type": "color",
+    "$description": ""
+  },
+  "background-color": {
+    "$value": "{palette.grey.900}",
+    "$type": "color",
+    "$description": ""
+  },
+  "twim": {
+    "label-accent": {
+      "$value": "{palette.paprika.400}",
+      "$type": "color",
+      "$description": ""
+    }
+  },
+  "focus-ring": {
+    "$value": "{palette.marine.400}",
     "$type": "color",
     "$description": ""
   }

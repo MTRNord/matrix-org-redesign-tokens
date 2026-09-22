@@ -1,8 +1,10 @@
 {
-  "reduced-text": {
-    "$value": "rgb(95, 95, 95)",
-    "$type": "color",
-    "$description": "Used for things like the Metadata of a Post."
+  "inter": {
+    "$value": [
+      "Inter"
+    ],
+    "$type": "fontFamilies",
+    "$description": ""
   },
   "light-grey": {
     "$value": "rgb(182, 182, 182)",
@@ -19,6 +21,23 @@
     "$type": "color",
     "$description": ""
   },
+  "announcement": {
+    "background": {
+      "$value": "{palette.marine.800}",
+      "$type": "color",
+      "$description": ""
+    },
+    "link": {
+      "$value": "{palette.tangerine.400}",
+      "$type": "color",
+      "$description": ""
+    },
+    "link-hover": {
+      "$value": "{palette.tangerine.300}",
+      "$type": "color",
+      "$description": ""
+    }
+  },
   "H3": {
     "$value": {
       "fontFamilies": [
@@ -28,6 +47,20 @@
       "fontWeights": "700",
       "lineHeights": "1.2",
       "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "navigation-item": {
+    "$value": {
+      "fontFamilies": [
+        "{inter}"
+      ],
+      "fontSizes": "18",
+      "fontWeights": "400",
+      "lineHeights": "1.2",
       "textCase": "none",
       "textDecoration": "none"
     },
@@ -277,11 +310,6 @@
       "textDecoration": "none"
     },
     "$type": "typography",
-    "$description": ""
-  },
-  "Links": {
-    "$value": "#FF9505",
-    "$type": "color",
     "$description": ""
   }
 }

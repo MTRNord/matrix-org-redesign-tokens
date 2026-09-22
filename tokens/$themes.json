@@ -7,6 +7,7 @@
     "isSource": false,
     "selectedTokenSets": {
       "mode/light": "enabled",
+      "Color Palettes": "enabled",
       "Global": "enabled"
     }
   },
@@ -18,6 +19,7 @@
     "isSource": false,
     "selectedTokenSets": {
       "mode/dark": "enabled",
+      "Color Palettes": "enabled",
       "Global": "enabled"
     }
   }

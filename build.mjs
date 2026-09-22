@@ -1,128 +1,113 @@
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
-import { writeFileSync, readdirSync, readFileSync, rmSync } from "node:fs";
+import { writeFileSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import getConfig, { fontsConfig } from "./sd.config.mjs";
 
-// Registers all tokens-studio transforms/transformGroups/preprocessor
 register(StyleDictionary);
 
-// --- helpers: find Penpot files by set name (hash-prefixed filenames) ---
+/**
+ * Theme emitted without a media query under `:root`.
+ *
+ * Fixed here instead of read from `$metadata.activeThemes`, because that
+ * field holds the theme last selected in the Penpot UI.
+ */
+const BASE_THEME = "Mode/Light";
 
-const kebab = (s) => s.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
-
-/** Recursively collect every .json file under dir (incl. $-prefixed). */
-const collectJson = (dir) => {
-  const out = [];
-  for (const entry of readdirSync(dir, { withFileTypes: true })) {
-    const p = join(dir, entry.name);
-    if (entry.isDirectory()) out.push(...collectJson(p));
-    else if (entry.name.endsWith(".json")) out.push(p);
-  }
-  return out;
+/**
+ * Media query for each theme other than the base theme. A theme without an
+ * entry fails the build, as it would otherwise override the base theme.
+ */
+const MEDIA_QUERY_FOR = {
+  "Mode/Dark": "(prefers-color-scheme: dark)",
 };
 
 /**
- * Resolve a Penpot set name to its file. Matches by filename suffix so it
- * works with and without Penpot's hash prefixes (`abc123-dark.json`, `dark.json`).
+ * Path of a token set file. The Penpot multi-file export uses the set name
+ * as path, e.g. `mode/dark` is `tokens/mode/dark.json`.
+ *
+ * @param {string} setName Penpot token set name
+ * @returns {string}
  */
-const makeFileResolver = (allFiles) => (name) => {
-  const suffix = `-${name}.json`;
-  const plain = `/${name}.json`;
-  const matches = allFiles.filter(
-    (p) => p.endsWith(suffix) || p.endsWith(plain),
-  );
-  if (matches.length !== 1) {
-    throw new Error(
-      `expected exactly one file for set '${name}', found ${matches.length}.` +
-        ` Files: ${allFiles.join(", ")}`,
-    );
-  }
-  return matches[0];
-};
+const setFile = (setName) => join("tokens", `${setName}.json`);
 
-const resolve = makeFileResolver(collectJson("tokens"));
-const setFile = (setName) => resolve(setName.split("/").pop());
+/**
+ * @param {string} path
+ * @returns {any}
+ */
+const readJson = (path) => JSON.parse(readFileSync(path, "utf8"));
 
-// --- read Penpot metadata ---
-// --- read Penpot metadata ---------------------------------------------------
+/**
+ * @param {string} s
+ * @returns {string}
+ */
+const kebab = (s) => s.replace(/([a-z0-9])([A-Z])/g, "$1-$2").toLowerCase();
 
-const themes = JSON.parse(readFileSync(resolve("$themes"), "utf8"));
-const metadata = JSON.parse(readFileSync(resolve("$metadata"), "utf8"));
+const themes = readJson(setFile("$themes"));
+const metadata = readJson(setFile("$metadata"));
 
-/** Source list for a set of token-set names, in Penpot's own precedence order. */
+const themeId = (t) => `${t.group}/${t.name}`;
+const setsOf = (t) => Object.keys(t.selectedTokenSets);
+
+/**
+ * Token files for the given sets, in Penpot's precedence order.
+ *
+ * @param {string[]} setNames Penpot token set names
+ * @returns {string[]}
+ */
 const sourcesFor = (setNames) =>
   metadata.tokenSetOrder.filter((s) => setNames.includes(s)).map(setFile);
 
-// --- derive passes from the theme definitions --------------------------------
-
-if (themes.length === 0) {
-  throw new Error(
-    "$themes.json is empty — define themes in Penpot and re-export.",
-  );
+const baseTheme = themes.find((t) => themeId(t) === BASE_THEME);
+if (!baseTheme) {
+  throw new Error(`$themes.json has no '${BASE_THEME}' theme.`);
 }
 
-// sets shared by every theme → belong in the base file
-const commonSets = Object.keys(themes[0].selectedTokenSets).filter((s) =>
-  themes.every((t) => t.selectedTokenSets[s]),
-);
-
-const activeTheme =
-  themes.find((t) => `${t.group}/${t.name}` === metadata.activeThemes?.[0]) ??
-  themes[0];
-
-const MEDIA_QUERY_FOR = {
-  "Mode/Dark": "(prefers-color-scheme: dark)",
-  // "Mode/Light": "(prefers-color-scheme: light)", // optional; light is the default anyway
-};
-
 const passes = [
-  // base pass: shared sets + active theme, emitted unscoped under :root
   {
-    source: sourcesFor([
-      ...commonSets,
-      ...Object.keys(activeTheme.selectedTokenSets),
-    ]),
+    source: sourcesFor(setsOf(baseTheme)),
     dest: "variables",
+    typographyClasses: true,
   },
   ...themes
-    .filter((t) => t !== activeTheme)
+    .filter((t) => t !== baseTheme)
     .map((t) => {
-      const ownSets = Object.keys(t.selectedTokenSets).filter(
-        (s) => !commonSets.includes(s),
-      );
-
+      const media = MEDIA_QUERY_FOR[themeId(t)];
+      if (!media) {
+        throw new Error(`no media query configured for theme '${themeId(t)}'.`);
+      }
+      const ownSets = setsOf(t).filter((s) => !setsOf(baseTheme).includes(s));
       return {
-        // full context so aliases resolve…
-        source: sourcesFor(Object.keys(t.selectedTokenSets)),
-        // …but emit only tokens physically defined in this theme's own sets
+        // All sets are loaded so references resolve, but only tokens from
+        // the theme's own sets are emitted.
+        source: sourcesFor(setsOf(t)),
         onlyFiles: ownSets.map(setFile),
         dest: `variables.${kebab(t.group)}.${kebab(t.name)}`,
-        media: MEDIA_QUERY_FOR[`${t.group}/${t.name}`],
+        media,
       };
     }),
 ];
 
-// --- build ---------------------------------------------------------------------
+rmSync("build", { recursive: true, force: true });
 
-// 1. fonts pass — mode-independent, built once
-const fontsSd = new StyleDictionary(fontsConfig([resolve("font")]));
-await fontsSd.buildAllPlatforms();
+await new StyleDictionary(
+  fontsConfig([join("tokens", "extra", "font.json")]),
+).buildAllPlatforms();
 
-// 2. one pass per theme artifact
 for (const pass of passes) {
   await new StyleDictionary(getConfig(pass)).buildAllPlatforms();
 }
 
-// 3. index files — fonts first, base before theme overrides
-const importTargets = ["fonts", ...passes.map((p) => p.dest)];
-
+// Import order matters: theme overrides follow the base variables.
 writeFileSync(
   "build/css/index.css",
   [
-    `@import url("fonts.css");`,
-    ...passes.map((p) => `@import url("_${p.dest}.css");`),
-  ].join("\n") + "\n",
+    "fonts.css",
+    ...passes.map((p) => `_${p.dest}.css`),
+    "typography.css",
+  ]
+    .map((f) => `@import url("${f}");`)
+    .join("\n") + "\n",
 );
 
 console.log(`Built ${passes.length} theme pass(es)`);

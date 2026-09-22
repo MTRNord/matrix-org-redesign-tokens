@@ -1,8 +1,13 @@
 {
   "name": "matrix-org-design-token-tests",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "build": "node build.mjs",
-    "clean": "style-dictionary clean"
+    "test": "node build.mjs && node check.mjs"
   },
   "dependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",

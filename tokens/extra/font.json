@@ -6,21 +6,21 @@
           "normal": {
             "$value": "fonts/HankenGrotesk-Light",
             "$type": "asset",
-            "formats": ["woff2", "woff"]
+            "formats": ["woff2"]
           }
         },
         "400": {
           "normal": {
             "$value": "fonts/HankenGrotesk-Regular",
             "$type": "asset",
-            "formats": ["woff2", "woff"]
+            "formats": ["woff2"]
           }
         },
         "700": {
           "normal": {
             "$value": "fonts/HankenGrotesk-Bold",
             "$type": "asset",
-            "formats": ["woff2", "woff"]
+            "formats": ["woff2"]
           }
         }
       },
@@ -29,14 +29,14 @@
           "normal": {
             "$value": "fonts/Lora-Light",
             "$type": "asset",
-            "formats": ["woff2", "woff"]
+            "formats": ["woff2"]
           }
         },
         "700": {
           "normal": {
             "$value": "fonts/Lora-Bold",
             "$type": "asset",
-            "formats": ["woff2", "woff"]
+            "formats": ["woff2"]
           }
         }
       }

@@ -6,7 +6,7 @@
 
 import StyleDictionary from "style-dictionary";
 import { register } from "@tokens-studio/sd-transforms";
-import { writeFileSync, readFileSync, rmSync } from "node:fs";
+import { existsSync, writeFileSync, readFileSync, rmSync } from "node:fs";
 import { join } from "node:path";
 import { fileHeader } from "style-dictionary/utils";
 import getConfig, { fontsConfig, licenseHeader } from "./sd.config.mjs";
@@ -74,7 +74,7 @@ const passes = [
   {
     source: sourcesFor(setsOf(baseTheme)),
     dest: "variables",
-    typographyClasses: true,
+    utilities: true,
   },
   ...themes
     .filter((t) => t !== baseTheme)
@@ -106,11 +106,17 @@ for (const pass of passes) {
 }
 
 // Import order matters: theme overrides follow the base variables.
-const imports = [
+const cssFiles = [
   "fonts.css",
   ...passes.map((p) => `_${p.dest}.css`),
+  "base.css",
   "typography.css",
-].map((f) => `@import url("${f}");`);
+];
+const missing = cssFiles.filter((f) => !existsSync(join("build", "css", f)));
+if (missing.length > 0) {
+  throw new Error(`index.css imports files that were not built: ${missing.join(", ")}`);
+}
+const imports = cssFiles.map((f) => `@import url("${f}");`);
 const indexHeader = await fileHeader({
   file: { options: { fileHeader: licenseHeader } },
 });

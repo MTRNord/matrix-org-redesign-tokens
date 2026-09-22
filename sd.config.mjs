@@ -210,6 +210,32 @@ StyleDictionary.registerFormat({
 });
 
 /**
+ * Base element rules for the page background and links, each also available
+ * as a class. Element selectors sit in `:where()` like in `typography.css`.
+ *
+ * The rules reference fixed token names. If a token is removed, Stylelint
+ * reports the undefined custom property.
+ */
+const BASE_RULES = [
+  [":where(body), .background", { "background-color": "background-color", color: "primary-text-color" }],
+  [":where(a), .link", { color: "link" }],
+  [":where(a):hover, .link:hover", { color: "link-hover" }],
+];
+
+StyleDictionary.registerFormat({
+  name: "css/base-elements",
+  format: async ({ file }) => {
+    const rules = BASE_RULES.map(([selector, declarations]) => {
+      const decls = Object.entries(declarations).map(
+        ([property, token]) => `  ${property}: var(--${token});`,
+      );
+      return `${selector} {\n${decls.join("\n")}\n}`;
+    });
+    return (await fileHeader({ file })) + rules.join("\n\n") + "\n";
+  },
+});
+
+/**
  * Style Dictionary config for one theme.
  *
  * @param {object} pass
@@ -217,11 +243,11 @@ StyleDictionary.registerFormat({
  * @param {string} pass.dest output file name without leading underscore and extension
  * @param {string} [pass.media] media query wrapping the `:root` block
  * @param {string[]} [pass.onlyFiles] only emit tokens defined in these files
- * @param {boolean} [pass.typographyClasses] also emit `typography.css`
+ * @param {boolean} [pass.utilities] also emit `base.css` and `typography.css`
  * @returns {import("style-dictionary/types").Config}
  */
 export default function getConfig(pass) {
-  const { source, dest, media, onlyFiles, typographyClasses } = pass;
+  const { source, dest, media, onlyFiles, utilities } = pass;
 
   const files = [
     {
@@ -236,11 +262,11 @@ export default function getConfig(pass) {
       }),
     },
   ];
-  if (typographyClasses) {
-    files.push({
-      destination: "typography.css",
-      format: "css/typography-classes",
-    });
+  if (utilities) {
+    files.push(
+      { destination: "base.css", format: "css/base-elements" },
+      { destination: "typography.css", format: "css/typography-classes" },
+    );
   }
 
   return {

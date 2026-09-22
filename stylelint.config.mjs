@@ -18,7 +18,7 @@ export default {
   rules: {
     "color-no-hex": true,
     "custom-property-pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-    "selector-class-pattern": "^text-[a-z0-9]+(-[a-z0-9]+)*$",
+    "selector-class-pattern": "^(text-[a-z0-9]+(-[a-z0-9]+)*|link|background)$",
     // Unitless font sizes and letter spacing, except for 0.
     "declaration-property-value-disallowed-list": {
       "/^--.+-(font-size|letter-spacing)$/": ["/^-?(?!0*\\.?0+$)\\d*\\.?\\d+$/"],

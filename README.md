@@ -34,6 +34,7 @@ Import `build/css/index.css`, or the individual files:
 | `fonts.css` | `@font-face` rules for the fonts in `tokens/extra/font.json` |
 | `_variables.css` | All tokens as custom properties on `:root`, with light theme values |
 | `_variables.mode.dark.css` | Dark theme values, applied with `@media (prefers-color-scheme: dark)` |
+| `base.css` | Page background and text color on `body`, and link colors on `a`. Also available as the `.background` and `.link` classes. |
 | `typography.css` | A `.text-<name>` class for each typography token, e.g. `.text-h1`. The `H1` to `H6` tokens also style the `h1` to `h6` elements. |
 
 The element styles use `:where()`, so any class or element selector on the site overrides them.

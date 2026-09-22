@@ -8,6 +8,7 @@ import { expandTypesMap } from "@tokens-studio/sd-transforms";
 import StyleDictionary from "style-dictionary";
 import { transformTypes } from "style-dictionary/enums";
 import { fileHeader } from "style-dictionary/utils";
+import tinycolor from "tinycolor2";
 
 /**
  * License header for all generated files, below the default
@@ -77,6 +78,32 @@ StyleDictionary.registerPreprocessor({
       }
     }
     return node;
+  },
+});
+
+/**
+ * @param {number} n
+ * @returns {number} `n` rounded to two decimals
+ */
+const round2 = (n) => Math.round(n * 100) / 100;
+
+/**
+ * Outputs colors as CSS Color 4 `hsl()`.
+ *
+ * The built-in `color/hsl-4` rounds hue, saturation and lightness to whole
+ * numbers, which changes most colors by one RGB step, e.g. `#ec4e20`
+ * becomes `hsl(14 84% 53%)`, which is `#ec5122`. Two decimals are enough
+ * to reproduce every 8-bit RGB value exactly.
+ */
+StyleDictionary.registerTransform({
+  name: "color/hsl-precise",
+  type: transformTypes.value,
+  filter: (token) => token.$type === "color",
+  transform: (token) => {
+    const color = tinycolor(token.$value);
+    const { h, s, l, a } = color.toHsl();
+    const hsl = `${round2(h)} ${round2(s * 100)}% ${round2(l * 100)}%`;
+    return a === 1 ? `hsl(${hsl})` : `hsl(${hsl} / ${round2(a)})`;
   },
 });
 
@@ -232,8 +259,9 @@ export default function getConfig(pass) {
     platforms: {
       css: {
         transformGroup: "tokens-studio",
-        // Runs after the group, so name/kebab overrides its name/camel.
-        transforms: ["name/kebab", "size/pxToRem"],
+        // Runs after the group, so name/kebab overrides its name/camel and
+        // color/hsl-precise replaces the hex output of color/css.
+        transforms: ["name/kebab", "size/pxToRem", "color/hsl-precise"],
         buildPath: "build/css/",
         options: { fileHeader: "matrix-org/license" },
         files,

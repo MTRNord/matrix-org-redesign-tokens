@@ -15,7 +15,7 @@ npm install
 npm run build
 ```
 
-The CSS ends up in `build/css/`. Run `npm test` to build and check the output.
+The CSS ends up in `build/css/`. Run `npm test` to build and lint the output with [Stylelint](https://stylelint.io/).
 
 ## Updating tokens
 
@@ -54,6 +54,8 @@ Fonts used above the fold should be preloaded in the page `<head>`:
 The `crossorigin` attribute is needed even for fonts on the same domain. Without it the browser downloads the font twice.
 
 ## Notes
+
+Colors are written as `hsl()` with two decimals by the `color/hsl-precise` transform in `sd.config.mjs`. Style Dictionary's built-in `color/hsl-4` rounds to whole numbers, which shifts most colors slightly.
 
 Penpot exports typography tokens with plural keys such as `fontSizes`. The `penpot/typography` preprocessor in `sd.config.mjs` renames them to the names Style Dictionary expects. It can be removed once [penpot#8140](https://github.com/penpot/penpot/issues/8140) is fixed.
 

@@ -10,17 +10,17 @@
     "$description": ""
   },
   "link-hover": {
-    "$value": "{palette.tangerine.700}",
+    "$value": "{palette.orange.700}",
     "$type": "color",
     "$description": ""
   },
   "divider": {
-    "$value": "{palette.paprika.500}",
+    "$value": "{palette.petrol.600}",
     "$type": "color",
     "$description": ""
   },
   "accent-border": {
-    "$value": "{palette.marine.600}",
+    "$value": "{palette.petrol.600}",
     "$type": "color",
     "$description": ""
   },
@@ -35,7 +35,7 @@
     "$description": ""
   },
   "link": {
-    "$value": "{palette.tangerine.600}",
+    "$value": "{palette.orange.600}",
     "$type": "color",
     "$description": ""
   },
@@ -51,13 +51,13 @@
   },
   "twim": {
     "label-accent": {
-      "$value": "{palette.paprika.600}",
+      "$value": "{palette.petrol.700}",
       "$type": "color",
       "$description": ""
     }
   },
   "focus-ring": {
-    "$value": "{palette.marine.500}",
+    "$value": "{palette.orange.500}",
     "$type": "color",
     "$description": ""
   }

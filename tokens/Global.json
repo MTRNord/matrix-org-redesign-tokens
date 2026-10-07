@@ -16,6 +16,37 @@
     "$type": "color",
     "$description": ""
   },
+  "toc": {
+    "entry": {
+      "$value": {
+        "fontFamilies": [
+          "{sans}"
+        ],
+        "fontSizes": "16",
+        "fontWeights": "400",
+        "lineHeights": "1.4"
+      },
+      "$type": "typography",
+      "$description": ""
+    },
+    "current": {
+      "$value": {
+        "fontFamilies": [
+          "{sans}"
+        ],
+        "fontSizes": "16",
+        "fontWeights": "700",
+        "lineHeights": "1.4"
+      },
+      "$type": "typography",
+      "$description": ""
+    }
+  },
+  "border-width": {
+    "$value": "2",
+    "$type": "borderWidth",
+    "$description": "Used on all the colored borders"
+  },
   "spicy-paprika": {
     "$value": "#EC4E20",
     "$type": "color",
@@ -23,17 +54,22 @@
   },
   "announcement": {
     "background": {
-      "$value": "{palette.marine.800}",
+      "$value": "{Black}",
       "$type": "color",
       "$description": ""
     },
     "link": {
-      "$value": "{palette.tangerine.400}",
+      "$value": "{palette.orange.400}",
       "$type": "color",
       "$description": ""
     },
     "link-hover": {
-      "$value": "{palette.tangerine.300}",
+      "$value": "{palette.orange.300}",
+      "$type": "color",
+      "$description": ""
+    },
+    "border": {
+      "$value": "{palette.orange.400}",
       "$type": "color",
       "$description": ""
     }
@@ -156,7 +192,7 @@
     "$description": ""
   },
   "big-radius": {
-    "$value": "25",
+    "$value": "12",
     "$type": "borderRadius",
     "$description": ""
   },
@@ -172,19 +208,9 @@
     "$type": "typography",
     "$description": ""
   },
-  "SidebarItem": {
-    "$value": {
-      "fontFamilies": [
-        "{sans}"
-      ],
-      "fontSizes": "13",
-      "fontWeights": "400",
-      "lineHeights": "1.2",
-      "letterSpacing": "0",
-      "textCase": "none",
-      "textDecoration": "none"
-    },
-    "$type": "typography",
+  "card-border": {
+    "$value": "{palette.petrol.600}",
+    "$type": "color",
     "$description": ""
   },
   "H1": {
@@ -248,7 +274,7 @@
     "$description": ""
   },
   "small-radius": {
-    "$value": "5",
+    "$value": "4",
     "$type": "borderRadius",
     "$description": ""
   },
@@ -323,6 +349,18 @@
       "letterSpacing": "0",
       "textCase": "none",
       "textDecoration": "none"
+    },
+    "$type": "typography",
+    "$description": ""
+  },
+  "share-text": {
+    "$value": {
+      "fontFamilies": [
+        "{sans}"
+      ],
+      "fontSizes": "16",
+      "fontWeights": "700",
+      "textCase": "uppercase"
     },
     "$type": "typography",
     "$description": ""

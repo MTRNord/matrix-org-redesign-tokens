@@ -188,6 +188,53 @@
         "$description": ""
       }
     },
+    "orange": {
+      "100": {
+        "$value": "#fff2ec",
+        "$type": "color",
+        "$description": ""
+      },
+      "200": {
+        "$value": "#ffd8c3",
+        "$type": "color",
+        "$description": ""
+      },
+      "300": {
+        "$value": "#ffae81",
+        "$type": "color",
+        "$description": ""
+      },
+      "400": {
+        "$value": "#fe7802",
+        "$type": "color",
+        "$description": ""
+      },
+      "500": {
+        "$value": "#d96605",
+        "$type": "color",
+        "$description": ""
+      },
+      "600": {
+        "$value": "#b65401",
+        "$type": "color",
+        "$description": ""
+      },
+      "700": {
+        "$value": "#934302",
+        "$type": "color",
+        "$description": ""
+      },
+      "800": {
+        "$value": "#6e3102",
+        "$type": "color",
+        "$description": ""
+      },
+      "900": {
+        "$value": "#481d01",
+        "$type": "color",
+        "$description": ""
+      }
+    },
     "marine": {
       "100": {
         "$value": "#ecf7ff",
@@ -419,6 +466,53 @@
       },
       "900": {
         "$value": "#412301",
+        "$type": "color",
+        "$description": ""
+      }
+    },
+    "petrol": {
+      "100": {
+        "$value": "#e4faff",
+        "$type": "color",
+        "$description": ""
+      },
+      "200": {
+        "$value": "#bdeff9",
+        "$type": "color",
+        "$description": ""
+      },
+      "300": {
+        "$value": "#8fd8e7",
+        "$type": "color",
+        "$description": ""
+      },
+      "400": {
+        "$value": "#68c0d2",
+        "$type": "color",
+        "$description": ""
+      },
+      "500": {
+        "$value": "#4da7b8",
+        "$type": "color",
+        "$description": ""
+      },
+      "600": {
+        "$value": "#318e9f",
+        "$type": "color",
+        "$description": ""
+      },
+      "700": {
+        "$value": "#057080",
+        "$type": "color",
+        "$description": ""
+      },
+      "800": {
+        "$value": "#05515d",
+        "$type": "color",
+        "$description": ""
+      },
+      "900": {
+        "$value": "#01323a",
         "$type": "color",
         "$description": ""
       }

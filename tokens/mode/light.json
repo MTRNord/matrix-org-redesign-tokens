@@ -24,6 +24,11 @@
     "$type": "color",
     "$description": ""
   },
+  "image-border": {
+    "$value": "{palette.grey.600}",
+    "$type": "color",
+    "$description": ""
+  },
   "heading-anchor": {
     "$value": "{palette.grey.500}",
     "$type": "color",

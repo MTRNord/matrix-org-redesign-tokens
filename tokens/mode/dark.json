@@ -1,11 +1,11 @@
 {
   "reduced-text": {
-    "$value": "{palette.grey.400}",
+    "$value": "{palette.grey.300}",
     "$type": "color",
     "$description": ""
   },
   "primary-text-color": {
-    "$value": "{White}",
+    "$value": "{palette.grey.100}",
     "$type": "color",
     "$description": ""
   },
@@ -21,6 +21,11 @@
   },
   "accent-border": {
     "$value": "{palette.marine.500}",
+    "$type": "color",
+    "$description": ""
+  },
+  "image-border": {
+    "$value": "{palette.grey.400}",
     "$type": "color",
     "$description": ""
   },

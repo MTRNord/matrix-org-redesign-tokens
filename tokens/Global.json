@@ -217,6 +217,21 @@
     "$type": "typography",
     "$description": ""
   },
+  "cta-text": {
+    "$value": {
+      "fontSizes": "19",
+      "fontWeights": "300",
+      "lineHeights": "1.68",
+      "letterSpacing": "0",
+      "textCase": "none",
+      "textDecoration": "none",
+      "fontFamilies": [
+        "{inter}"
+      ]
+    },
+    "$type": "typography",
+    "$description": ""
+  },
   "Eyebrow": {
     "$value": {
       "fontFamilies": [

@@ -196,6 +196,21 @@
     "$type": "borderRadius",
     "$description": ""
   },
+  "shadow": {
+    "offset": {
+      "$value": [
+        {
+          "offsetX": "4",
+          "offsetY": "4",
+          "blur": "0",
+          "spread": "0",
+          "color": "{offset-shadow}"
+        }
+      ],
+      "$type": "shadow",
+      "$description": ""
+    }
+  },
   "twim-quote": {
     "$value": {
       "fontFamilies": [
@@ -208,7 +223,7 @@
     "$type": "typography",
     "$description": ""
   },
-  "card-border": {
+  "offset-shadow": {
     "$value": "{palette.petrol.600}",
     "$type": "color",
     "$description": ""

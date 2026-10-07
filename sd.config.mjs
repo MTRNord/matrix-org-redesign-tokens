@@ -275,6 +275,10 @@ export default function getConfig(pass) {
     preprocessors: ["penpot/typography", "tokens-studio"],
     log: { warnings: "error" },
     expand: {
+      // Typography is split into one custom property per font property, which
+      // typography.css uses. Shadows and other composites stay a single
+      // shorthand value, e.g. box-shadow: var(--shadow-offset).
+      include: ["typography"],
       typesMap: {
         ...expandTypesMap,
         // Penpot exports letter spacing without a unit. DTCG types it as a

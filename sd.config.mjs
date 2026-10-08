@@ -210,6 +210,95 @@ StyleDictionary.registerFormat({
 });
 
 /**
+ * Property names in component tokens mapped to the CSS property they set,
+ * e.g. `button.primary.background` sets `background-color` on
+ * `.button-primary`.
+ */
+const COMPONENT_PROPERTIES = {
+  background: "background-color",
+  foreground: "color",
+  text: "color",
+  color: "color",
+  border: "border-color",
+  "corner-radius": "border-radius",
+  shadow: "box-shadow",
+};
+
+/**
+ * Selector and CSS property for one component token, following the naming
+ * convention of the component sets, or undefined if the name does not fit.
+ *
+ * - `<parent>.<property>`, see COMPONENT_PROPERTIES: `.<parent> { property }`
+ * - `<parent>.<part>-<property>`: `.<parent>-<part> { property }`
+ * - a `-hover` suffix on either: the same on `:hover`
+ * - typography tokens named `text` or `font` style their parent class,
+ *   `<part>-font` styles `.<parent>-<part>`, any other name styles its own
+ *   class
+ *
+ * @param {import("style-dictionary/types").TransformedToken} token
+ * @returns {{selector: string, property: string} | undefined}
+ */
+const componentRule = (token) => {
+  const kebab = (parts) => parts.join("-").replace(/[A-Z]/g, (c) => "-" + c.toLowerCase());
+  const typographyProperty = TYPOGRAPHY_PROPERTIES[token.path.at(-1)];
+  if (typographyProperty && token.path.length > 2) {
+    const typography = token.path.slice(0, -1);
+    const name = typography.at(-1);
+    const parent = typography.slice(0, -1);
+    let target = typography;
+    if (name === "text" || name === "font") target = parent;
+    else if (name.endsWith("-font")) target = [...parent, name.slice(0, -"-font".length)];
+    return { selector: `.${kebab(target)}`, property: typographyProperty };
+  }
+  const last = token.path.at(-1);
+  const hover = last.endsWith("-hover");
+  const base = hover ? last.slice(0, -"-hover".length) : last;
+  const pseudo = hover ? ":hover" : "";
+  const parent = token.path.slice(0, -1);
+  if (COMPONENT_PROPERTIES[base]) {
+    return { selector: `.${kebab(parent)}${pseudo}`, property: COMPONENT_PROPERTIES[base] };
+  }
+  for (const [name, property] of Object.entries(COMPONENT_PROPERTIES)) {
+    if (base.endsWith(`-${name}`)) {
+      const part = base.slice(0, -(name.length + 1));
+      return { selector: `.${kebab([...parent, part])}${pseudo}`, property };
+    }
+  }
+  return undefined;
+};
+
+/**
+ * Component token file: the tokens as custom properties on `:root`, followed
+ * by helper classes generated from the token names, see componentRule.
+ * Tokens that do not fit the naming convention only get their custom
+ * property and are listed in the build output.
+ */
+StyleDictionary.registerFormat({
+  name: "css/component",
+  format: async (args) => {
+    const variables = await StyleDictionary.hooks.formats["css/variables"](args);
+    const rules = new Map();
+    const skipped = [];
+    for (const token of args.dictionary.allTokens) {
+      const rule = componentRule(token);
+      if (!rule) {
+        skipped.push(token.path.join("."));
+        continue;
+      }
+      if (!rules.has(rule.selector)) rules.set(rule.selector, []);
+      rules.get(rule.selector).push(`  ${rule.property}: var(--${token.name});`);
+    }
+    if (skipped.length > 0) {
+      console.log(`${args.file.destination}: no helper class for ${skipped.join(", ")}`);
+    }
+    // Hover rules after the base rules so they win at equal specificity.
+    const ordered = [...rules].sort(([a], [b]) => Number(a.endsWith(":hover")) - Number(b.endsWith(":hover")));
+    const classes = ordered.map(([selector, decls]) => `${selector} {\n${decls.join("\n")}\n}`);
+    return variables + "\n" + classes.join("\n\n") + "\n";
+  },
+});
+
+/**
  * Base element rules for the page background and links, each also available
  * as a class. Element selectors sit in `:where()` like in `typography.css`.
  *
@@ -244,10 +333,13 @@ StyleDictionary.registerFormat({
  * @param {string} [pass.media] media query wrapping the `:root` block
  * @param {string[]} [pass.onlyFiles] only emit tokens defined in these files
  * @param {boolean} [pass.utilities] also emit `base.css` and `typography.css`
+ * @param {{name: string, file: string}[]} [pass.components] component token
+ *   files, each emitted as `components/<name>.css` instead of `_<dest>.css`
  * @returns {import("style-dictionary/types").Config}
  */
 export default function getConfig(pass) {
-  const { source, dest, media, onlyFiles, utilities } = pass;
+  const { source, dest, media, onlyFiles, utilities, components = [] } = pass;
+  const componentFiles = components.map((c) => c.file);
 
   const files = [
     {
@@ -257,10 +349,16 @@ export default function getConfig(pass) {
         selector: media ? [`@media ${media}`, ":root"] : ":root",
         outputReferences: true,
       },
-      ...(onlyFiles && {
-        filter: (token) => onlyFiles.includes(token.filePath),
-      }),
+      filter: (token) =>
+        (!onlyFiles || onlyFiles.includes(token.filePath)) &&
+        !componentFiles.includes(token.filePath),
     },
+    ...components.map(({ name, file }) => ({
+      destination: `components/${name}.css`,
+      format: "css/component",
+      options: { selector: ":root", outputReferences: true },
+      filter: (token) => token.filePath === file,
+    })),
   ];
   if (utilities) {
     files.push(
@@ -295,10 +393,10 @@ export default function getConfig(pass) {
         buildPath: "build/css/",
         options: { fileHeader: "matrix-org/license" },
         files,
-        // Theme overrides reference tokens defined only in the base file,
-        // which Style Dictionary reports as filtered out references.
-        // Broken references still fail the build.
-        ...(onlyFiles && { log: { warnings: "disabled" } }),
+        // Theme overrides and component files reference tokens that live in
+        // another output file, which Style Dictionary reports as filtered out
+        // references. Broken references still fail the build.
+        ...((onlyFiles || components.length > 0) && { log: { warnings: "disabled" } }),
       },
     },
   };

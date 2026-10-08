@@ -1,0 +1,88 @@
+{
+  "button": {
+    "primary": {
+      "background": {
+        "$value": "{surface.light}",
+        "$type": "color",
+        "$description": ""
+      },
+      "foreground": {
+        "$value": "{text.on-light}",
+        "$type": "color",
+        "$description": ""
+      },
+      "border": {
+        "$value": "{text.on-light}",
+        "$type": "color",
+        "$description": ""
+      },
+      "background-hover": {
+        "$value": "{surface.dark}",
+        "$type": "color",
+        "$description": ""
+      },
+      "foreground-hover": {
+        "$value": "{text.on-dark}",
+        "$type": "color",
+        "$description": ""
+      },
+      "border-hover": {
+        "$value": "{text.on-dark}",
+        "$type": "color",
+        "$description": ""
+      }
+    },
+    "secondary": {
+      "background": {
+        "$value": "{surface.dark}",
+        "$type": "color",
+        "$description": ""
+      },
+      "foreground": {
+        "$value": "{text.on-dark}",
+        "$type": "color",
+        "$description": ""
+      },
+      "border": {
+        "$value": "{text.on-dark}",
+        "$type": "color",
+        "$description": ""
+      },
+      "background-hover": {
+        "$value": "{surface.light}",
+        "$type": "color",
+        "$description": ""
+      },
+      "foreground-hover": {
+        "$value": "{text.on-light}",
+        "$type": "color",
+        "$description": ""
+      },
+      "border-hover": {
+        "$value": "{text.on-light}",
+        "$type": "color",
+        "$description": ""
+      }
+    },
+    "corner-radius": {
+      "$value": "{button-radius}",
+      "$type": "borderRadius",
+      "$description": ""
+    },
+    "text": {
+      "$value": {
+        "fontFamilies": [
+          "{inter}"
+        ],
+        "fontSizes": "18",
+        "fontWeights": "700",
+        "lineHeights": "1.2",
+        "letterSpacing": "0",
+        "textCase": "none",
+        "textDecoration": "none"
+      },
+      "$type": "typography",
+      "$description": ""
+    }
+  }
+}

@@ -1,63 +1,56 @@
 {
   "reduced-text": {
-    "$value": "{palette.grey.600}",
+    "$value": "{palette.brand.teal}",
     "$type": "color",
     "$description": ""
   },
   "primary-text-color": {
-    "$value": "{Black}",
+    "$value": "{palette.brand.black}",
     "$type": "color",
     "$description": ""
   },
   "link-hover": {
-    "$value": "{palette.orange.700}",
+    "$value": "{palette.brand.wine}",
+    "$type": "color",
+    "$description": ""
+  },
+  "label-accent": {
+    "$value": "{palette.brand.teal}",
     "$type": "color",
     "$description": ""
   },
   "divider": {
-    "$value": "{palette.petrol.600}",
+    "$value": "{palette.brand.coral}",
     "$type": "color",
     "$description": ""
   },
   "accent-border": {
-    "$value": "{palette.petrol.600}",
-    "$type": "color",
-    "$description": ""
-  },
-  "image-border": {
-    "$value": "{palette.grey.600}",
+    "$value": "{palette.brand.wine}",
     "$type": "color",
     "$description": ""
   },
   "heading-anchor": {
-    "$value": "{palette.grey.500}",
+    "$value": "{palette.brand.teal}",
     "$type": "color",
     "$description": ""
   },
   "link": {
-    "$value": "{palette.orange.600}",
+    "$value": "{palette.brand.wine}",
     "$type": "color",
     "$description": ""
   },
   "primary-text-color-inverted": {
-    "$value": "{White}",
+    "$value": "{palette.brand.white}",
     "$type": "color",
     "$description": ""
   },
   "background-color": {
-    "$value": "{White}",
+    "$value": "{palette.brand.white}",
     "$type": "color",
     "$description": ""
   },
-  "twim": {
-    "label-accent": {
-      "$value": "{palette.petrol.700}",
-      "$type": "color",
-      "$description": ""
-    }
-  },
   "focus-ring": {
-    "$value": "{palette.orange.500}",
+    "$value": "{palette.brand.teal}",
     "$type": "color",
     "$description": ""
   }

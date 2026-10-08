@@ -1,0 +1,67 @@
+{
+  "toc": {
+    "title": {
+      "$value": {
+        "fontFamilies": [
+          "{sans}"
+        ],
+        "fontSizes": "13",
+        "fontWeights": "700",
+        "lineHeights": "1.2",
+        "letterSpacing": "1.4",
+        "textCase": "uppercase"
+      },
+      "$type": "typography",
+      "$description": ""
+    },
+    "title-color": {
+      "$value": "{reduced-text}",
+      "$type": "color",
+      "$description": ""
+    },
+    "current": {
+      "$value": {
+        "fontFamilies": [
+          "{sans}"
+        ],
+        "fontSizes": "16",
+        "fontWeights": "700",
+        "lineHeights": "1.4"
+      },
+      "$type": "typography",
+      "$description": ""
+    },
+    "entry": {
+      "$value": {
+        "fontFamilies": [
+          "{sans}"
+        ],
+        "fontSizes": "16",
+        "fontWeights": "400",
+        "lineHeights": "1.4"
+      },
+      "$type": "typography",
+      "$description": ""
+    },
+    "entry-color": {
+      "$value": "{reduced-text}",
+      "$type": "color",
+      "$description": ""
+    },
+    "current-color": {
+      "$value": "{primary-text-color}",
+      "$type": "color",
+      "$description": ""
+    },
+    "list-border": {
+      "$value": "{heading-anchor}",
+      "$type": "color",
+      "$description": ""
+    },
+    "current-border": {
+      "$value": "{accent-border}",
+      "$type": "color",
+      "$description": ""
+    }
+  }
+}

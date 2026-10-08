@@ -3,14 +3,26 @@
     "Global",
     "Color Palettes",
     "mode/light",
-    "mode/dark"
+    "mode/dark",
+    "components/button",
+    "components/header",
+    "components/card",
+    "components/toc",
+    "components/share",
+    "components/twim"
   ],
   "activeThemes": [
     "Mode/Light"
   ],
   "activeSets": [
     "mode/light",
+    "components/share",
+    "components/button",
     "Color Palettes",
+    "components/card",
+    "components/header",
+    "components/twim",
+    "components/toc",
     "Global"
   ]
 }

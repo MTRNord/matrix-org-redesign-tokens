@@ -1,0 +1,39 @@
+{
+  "card": {
+    "background": {
+      "$value": "{surface.dark}",
+      "$type": "color",
+      "$description": ""
+    },
+    "text": {
+      "$value": "{text.on-dark}",
+      "$type": "color",
+      "$description": ""
+    },
+    "corner-radius": {
+      "$value": "{small-radius}",
+      "$type": "borderRadius",
+      "$description": ""
+    },
+    "shadow": {
+      "$value": "{shadow.offset}",
+      "$type": "shadow",
+      "$description": ""
+    },
+    "body-font": {
+      "$value": {
+        "fontFamilies": [
+          "{inter}"
+        ],
+        "fontSizes": "19",
+        "fontWeights": "300",
+        "lineHeights": "1.68",
+        "letterSpacing": "0",
+        "textCase": "none",
+        "textDecoration": "none"
+      },
+      "$type": "typography",
+      "$description": ""
+    }
+  }
+}

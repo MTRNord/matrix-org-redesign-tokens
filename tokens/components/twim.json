@@ -1,0 +1,40 @@
+{
+  "twim": {
+    "label-color": {
+      "$value": "{label-accent}",
+      "$type": "color",
+      "$description": ""
+    },
+    "author-color": {
+      "$value": "{link}",
+      "$type": "color",
+      "$description": ""
+    },
+    "quote": {
+      "$value": {
+        "fontFamilies": [
+          "{serif}"
+        ],
+        "fontSizes": "16.8",
+        "fontWeights": "300",
+        "lineHeights": "1.31"
+      },
+      "$type": "typography",
+      "$description": ""
+    },
+    "quote-attribution": {
+      "$value": {
+        "fontFamilies": [
+          "{sans}"
+        ],
+        "fontSizes": "13",
+        "fontWeights": "700",
+        "lineHeights": "1.2",
+        "letterSpacing": "1.4",
+        "textCase": "uppercase"
+      },
+      "$type": "typography",
+      "$description": ""
+    }
+  }
+}

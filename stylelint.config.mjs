@@ -4,6 +4,22 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { existsSync, readdirSync } from "node:fs";
+
+const componentDir = "build/css/components";
+
+/**
+ * Files that define custom properties used in other files. Listed explicitly
+ * because Stylelint fails on a glob that matches nothing, which is the case
+ * before the first component token set exists.
+ */
+const referenceFiles = [
+  "build/css/_variables.css",
+  ...(existsSync(componentDir)
+    ? readdirSync(componentDir).map((f) => `${componentDir}/${f}`)
+    : []),
+];
+
 /**
  * Checks the generated CSS in `build/css/`, e.g. after a change in the
  * Penpot export format.
@@ -14,11 +30,11 @@
  * @type {import("stylelint").Config}
  */
 export default {
-  referenceFiles: ["build/css/_variables.css"],
+  referenceFiles,
   rules: {
     "color-no-hex": true,
     "custom-property-pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
-    "selector-class-pattern": "^(text-[a-z0-9]+(-[a-z0-9]+)*|link|background)$",
+    "selector-class-pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
     // Unitless font sizes and letter spacing, except for 0.
     "declaration-property-value-disallowed-list": {
       "/^--.+-(font-size|letter-spacing)$/": ["/^-?(?!0*\\.?0+$)\\d*\\.?\\d+$/"],

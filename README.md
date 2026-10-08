@@ -25,6 +25,21 @@ Export the tokens from Penpot in the multi-file format and replace the contents 
 
 Token names are lowercase with words separated by hyphens, for example `primary-text-color`.
 
+### Component tokens
+
+Token sets named `components/<name>` in Penpot hold the tokens of one component, for example `components/button`. Each one is built into its own file, `build/css/components/<name>.css`, and is not part of `_variables.css`.
+
+- Enable every component set in all themes. The build fails if one is missing.
+- Start token names with the component name, for example `button.primary.background`.
+- Color tokens reference semantic tokens such as `{link}` or `{primary-text-color}`, never a palette color or a fixed value, so they follow dark mode. The build fails otherwise.
+- Each component file also contains helper classes generated from the token names, for example `button.primary.background` becomes `.button-primary { background-color: … }`:
+  - `<parent>.<property>` sets the property on `.<parent>`. Properties are `background`, `foreground`, `text`, `color` (all `color` except `background`), `border`, `corner-radius` and `shadow`.
+  - `<parent>.<part>-<property>` sets it on `.<parent>-<part>`, for example `toc.entry-color`.
+  - A `-hover` suffix puts the property on `:hover`.
+  - Typography tokens named `text` or `font` style the parent class, `<part>-font` styles `.<parent>-<part>`, any other name styles its own class.
+  - Tokens that do not fit only get their custom property, and the build lists them.
+- Token names must not collide with existing ones. `button.radius` and the global `button-radius` would both become `--button-radius`, which the build reports.
+
 ## Using the CSS
 
 Import `build/css/index.css`, or the individual files:
@@ -35,6 +50,7 @@ Import `build/css/index.css`, or the individual files:
 | `_variables.css` | All tokens as custom properties on `:root`, with light theme values |
 | `_variables.mode.dark.css` | Dark theme values, applied with `@media (prefers-color-scheme: dark)` |
 | `base.css` | Page background and text color on `body`, and link colors on `a`. Also available as the `.background` and `.link` classes. |
+| `components/<name>.css` | Tokens of one component, see [Component tokens](#component-tokens) |
 | `typography.css` | A `.text-<name>` class for each typography token, e.g. `.text-h1`. The `H1` to `H6` tokens also style the `h1` to `h6` elements. |
 
 The element styles use `:where()`, so any class or element selector on the site overrides them.

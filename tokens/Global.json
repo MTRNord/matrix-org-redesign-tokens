@@ -6,73 +6,10 @@
     "$type": "fontFamilies",
     "$description": ""
   },
-  "light-grey": {
-    "$value": "rgb(182, 182, 182)",
-    "$type": "color",
-    "$description": ""
-  },
-  "Black": {
-    "$value": "rgb(0, 0, 0)",
-    "$type": "color",
-    "$description": ""
-  },
-  "toc": {
-    "entry": {
-      "$value": {
-        "fontFamilies": [
-          "{sans}"
-        ],
-        "fontSizes": "16",
-        "fontWeights": "400",
-        "lineHeights": "1.4"
-      },
-      "$type": "typography",
-      "$description": ""
-    },
-    "current": {
-      "$value": {
-        "fontFamilies": [
-          "{sans}"
-        ],
-        "fontSizes": "16",
-        "fontWeights": "700",
-        "lineHeights": "1.4"
-      },
-      "$type": "typography",
-      "$description": ""
-    }
-  },
   "border-width": {
     "$value": "2",
     "$type": "borderWidth",
     "$description": "Used on all the colored borders"
-  },
-  "spicy-paprika": {
-    "$value": "#EC4E20",
-    "$type": "color",
-    "$description": ""
-  },
-  "announcement": {
-    "background": {
-      "$value": "{Black}",
-      "$type": "color",
-      "$description": ""
-    },
-    "link": {
-      "$value": "{palette.orange.400}",
-      "$type": "color",
-      "$description": ""
-    },
-    "link-hover": {
-      "$value": "{palette.orange.300}",
-      "$type": "color",
-      "$description": ""
-    },
-    "border": {
-      "$value": "{palette.orange.400}",
-      "$type": "color",
-      "$description": ""
-    }
   },
   "H3": {
     "$value": {
@@ -87,25 +24,6 @@
       "textDecoration": "none"
     },
     "$type": "typography",
-    "$description": ""
-  },
-  "navigation-item": {
-    "$value": {
-      "fontFamilies": [
-        "{inter}"
-      ],
-      "fontSizes": "18",
-      "fontWeights": "400",
-      "lineHeights": "1.2",
-      "textCase": "none",
-      "textDecoration": "none"
-    },
-    "$type": "typography",
-    "$description": ""
-  },
-  "bright-marine": {
-    "$value": "#016FB9",
-    "$type": "color",
     "$description": ""
   },
   "ImageCaption": {
@@ -172,30 +90,6 @@
     "$type": "typography",
     "$description": ""
   },
-  "twim-quote-attribution": {
-    "$value": {
-      "fontFamilies": [
-        "{sans}"
-      ],
-      "fontSizes": "13",
-      "fontWeights": "700",
-      "letterSpacing": "1.4",
-      "textCase": "uppercase",
-      "lineHeights": "1.2"
-    },
-    "$type": "typography",
-    "$description": ""
-  },
-  "White": {
-    "$value": "rgb(255, 255, 255)",
-    "$type": "color",
-    "$description": ""
-  },
-  "big-radius": {
-    "$value": "12",
-    "$type": "borderRadius",
-    "$description": ""
-  },
   "shadow": {
     "offset": {
       "$value": [
@@ -211,22 +105,45 @@
       "$description": ""
     }
   },
-  "twim-quote": {
+  "offset-shadow": {
+    "$value": "{palette.brand.teal}",
+    "$type": "color",
+    "$description": ""
+  },
+  "footer-item": {
     "$value": {
       "fontFamilies": [
-        "{serif}"
+        "{inter}"
       ],
-      "fontSizes": "16.8",
-      "fontWeights": "300",
-      "lineHeights": "1.31"
+      "fontSizes": "16",
+      "fontWeights": "400"
     },
     "$type": "typography",
     "$description": ""
   },
-  "offset-shadow": {
-    "$value": "{palette.petrol.600}",
-    "$type": "color",
-    "$description": ""
+  "surface": {
+    "dark": {
+      "$value": "{palette.brand.black}",
+      "$type": "color",
+      "$description": ""
+    },
+    "light": {
+      "$value": "{palette.brand.white}",
+      "$type": "color",
+      "$description": ""
+    }
+  },
+  "text": {
+    "on-dark": {
+      "$value": "{palette.brand.white}",
+      "$type": "color",
+      "$description": ""
+    },
+    "on-light": {
+      "$value": "{palette.brand.black}",
+      "$type": "color",
+      "$description": ""
+    }
   },
   "H1": {
     "$value": {
@@ -258,21 +175,6 @@
     "$type": "typography",
     "$description": ""
   },
-  "cta-text": {
-    "$value": {
-      "fontSizes": "19",
-      "fontWeights": "300",
-      "lineHeights": "1.68",
-      "letterSpacing": "0",
-      "textCase": "none",
-      "textDecoration": "none",
-      "fontFamilies": [
-        "{inter}"
-      ]
-    },
-    "$type": "typography",
-    "$description": ""
-  },
   "Eyebrow": {
     "$value": {
       "fontFamilies": [
@@ -292,6 +194,13 @@
     "$value": "4",
     "$type": "borderRadius",
     "$description": ""
+  },
+  "accent": {
+    "on-dark": {
+      "$value": "{palette.brand.coral}",
+      "$type": "color",
+      "$description": ""
+    }
   },
   "H5": {
     "$value": {
@@ -316,21 +225,6 @@
       "fontSizes": "19",
       "fontWeights": "700",
       "lineHeights": "1.25",
-      "letterSpacing": "0",
-      "textCase": "uppercase",
-      "textDecoration": "none"
-    },
-    "$type": "typography",
-    "$description": ""
-  },
-  "SidebarTitle": {
-    "$value": {
-      "fontFamilies": [
-        "{sans}"
-      ],
-      "fontSizes": "13",
-      "fontWeights": "700",
-      "lineHeights": "1.2",
       "letterSpacing": "0",
       "textCase": "uppercase",
       "textDecoration": "none"
@@ -364,18 +258,6 @@
       "letterSpacing": "0",
       "textCase": "none",
       "textDecoration": "none"
-    },
-    "$type": "typography",
-    "$description": ""
-  },
-  "share-text": {
-    "$value": {
-      "fontFamilies": [
-        "{sans}"
-      ],
-      "fontSizes": "16",
-      "fontWeights": "700",
-      "textCase": "uppercase"
     },
     "$type": "typography",
     "$description": ""

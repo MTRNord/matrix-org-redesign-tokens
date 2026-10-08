@@ -7,7 +7,7 @@
   },
   "scripts": {
     "build": "node build.mjs",
-    "test": "node build.mjs && stylelint \"build/css/*.css\""
+    "test": "node build.mjs && stylelint \"build/css/**/*.css\""
   },
   "dependencies": {
     "@tokens-studio/sd-transforms": "^2.0.3",

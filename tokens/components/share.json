@@ -1,0 +1,26 @@
+{
+  "share": {
+    "text": {
+      "$value": {
+        "fontFamilies": [
+          "{sans}"
+        ],
+        "fontSizes": "16",
+        "fontWeights": "700",
+        "textCase": "uppercase"
+      },
+      "$type": "typography",
+      "$description": ""
+    },
+    "color": {
+      "$value": "{reduced-text}",
+      "$type": "color",
+      "$description": ""
+    },
+    "color-hover": {
+      "$value": "{link}",
+      "$type": "color",
+      "$description": ""
+    }
+  }
+}

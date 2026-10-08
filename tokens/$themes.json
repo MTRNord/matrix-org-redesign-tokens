@@ -7,7 +7,13 @@
     "isSource": false,
     "selectedTokenSets": {
       "mode/light": "enabled",
+      "components/share": "enabled",
+      "components/button": "enabled",
       "Color Palettes": "enabled",
+      "components/card": "enabled",
+      "components/header": "enabled",
+      "components/twim": "enabled",
+      "components/toc": "enabled",
       "Global": "enabled"
     }
   },
@@ -19,7 +25,13 @@
     "isSource": false,
     "selectedTokenSets": {
       "mode/dark": "enabled",
+      "components/share": "enabled",
+      "components/button": "enabled",
       "Color Palettes": "enabled",
+      "components/card": "enabled",
+      "components/header": "enabled",
+      "components/twim": "enabled",
+      "components/toc": "enabled",
       "Global": "enabled"
     }
   }
